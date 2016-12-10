@@ -7,7 +7,12 @@
 </head>
 <body>
 
-
+  <!--
+      The data-* attributes is used to store custom data private to the page or application
+      http://www.w3schools.com/tags/att_global_data.asp
+      https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes
+      find the "data-keys" at  www.keycode.info
+  -->
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -58,26 +63,12 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
-
-  function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if (!audio) return; // stop the fucntion from running all together
-    audio.currentTime = 0; // rewind to the start
-    audio.play();
-    key.classList.add('playing');
-  }
-  function removeTransition(e) {
-    if (e.propertyName !== 'transform') return; // skip it if it's not a transform
-    this.classList.remove('playing');
-  }
-
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound);
-
+  // listen for the key down event
+  window.addEventListener('keydown', function(e) {
+    console.log(e);
+  });
 </script>
+
 
 </body>
 </html>
